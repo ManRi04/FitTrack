@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'Challenges.dart';
+
 class ProfilPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -90,7 +92,25 @@ class ProfilPage extends StatelessWidget {
                 ),
               ),
             ),
-          ],
+            ElevatedButton.icon(
+              icon: Icon(Icons.fitness_center, size: 30), // Das Icon für den Button
+              label: Text('Go to Challenges'), // Der Text für den Button
+              onPressed: () {
+                // Navigiere zur ChallengesPage, wenn der Button gedrückt wird
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ChallengesPage()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white, backgroundColor: Colors.teal, // Textfarbe des Buttons
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12), // Abgerundete Ecken
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+              ),
+            ),
+            ],
         ),
       ),
     );

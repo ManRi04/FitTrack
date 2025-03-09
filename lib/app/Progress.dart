@@ -1,4 +1,5 @@
 import 'package:fit_track/app/calendar.dart';
+import 'package:fit_track/app/login.dart';
 import 'package:flutter/material.dart';
 import 'profile.dart';
 
@@ -62,70 +63,97 @@ class DetailPage extends StatefulWidget {
 class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(32, 48, 32, 32),
-      child: Column(
-        children: [
-          GestureDetector(
-            onTap: () {
-              // Navigation zur neuen Seite
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ProfilPage()),
-              );
-            },
-            child: Row(
-              mainAxisAlignment:
-                  MainAxisAlignment.start, // Verschiebt das Icon nach links
-              children: [
-                Icon(Icons.account_circle, size: 50, color: Colors.white),
-              ],
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsetsDirectional.fromSTEB(32, 48, 32, 32),
+        child: Column(
+          children: [
+            GestureDetector(
+              onTap: () {
+                // Navigation zur neuen Seite
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfilPage()),
+                );
+              },
+              child: Row(
+                mainAxisAlignment:
+                    MainAxisAlignment.start, // Verschiebt das Icon nach links
+                children: [
+                  Icon(Icons.account_circle, size: 50, color: Colors.white),
+                ],
+              ),
             ),
-          ),
-
-          GestureDetector(
-            onTap: () {
-              // Navigation zur neuen Seite
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => CalendarPage()),
-              );
-            },
-            child: Row(
-              mainAxisAlignment:
-                  MainAxisAlignment.center, // Verschiebt das Icon nach links
-              children: [
-                Icon(
-                  Icons.calendar_month_outlined,
-                  size: 50,
-                  color: Colors.white,
+      
+            GestureDetector(
+              onTap: () {
+                // Navigation zur neuen Seite
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CalendarPage()),
+                );
+              },
+              child: Row(
+                mainAxisAlignment:
+                    MainAxisAlignment.center, // Verschiebt das Icon nach links
+                children: [
+                  Icon(
+                    Icons.calendar_month_outlined,
+                    size: 50,
+                    color: Colors.white,
+                  ),
+                ],
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                // Navigation zur neuen Seite
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginScreen()),
+                );
+              },
+              child: Transform.translate(
+                offset: Offset(20, -105),  // Verschiebt das Icon um 20 Pixel nach rechts und 105 nach oben
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 0, right: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end, // Verschiebt das Icon nach rechts
+                    children: [
+                      // Hier ist der GestureDetector jetzt direkt um das Icon herum
+                      Icon(Icons.login_outlined, size: 50, color: Colors.white),
+                    ],
+                  ),
                 ),
-              ],
+              ),
             ),
-          ),
-          Text(
-            widget.headline,
-            style: TextStyle(fontSize: 48, color: Color(0xFFFFFFFF)),
-          ),
-          const TrackingElement(
-            color: Color(0xFFEFB21A),
-            icondata: Icons.directions_run,
-            unit: "m",
-            max: 5000,
-          ),
-          const TrackingElement(
-            color: Color(0xFF1A4CEF),
-            icondata: Icons.local_drink,
-            unit: "ml",
-            max: 3000,
-          ),
-          const TrackingElement(
-            color: Color(0xFFEF1A5A),
-            icondata: Icons.fastfood,
-            unit: "kcal",
-            max: 1800,
-          ),
-        ],
+      
+      
+            Text(
+              widget.headline,
+              style: TextStyle(fontSize: 48, color: Color(0xFFFFFFFF)),
+            ),
+            const TrackingElement(
+              color: Color(0xFFEFB21A),
+              icondata: Icons.directions_run,
+              unit: "m",
+              max: 5000,
+            ),
+            const TrackingElement(
+              color: Color(0xFF1A4CEF),
+              icondata: Icons.local_drink,
+              unit: "ml",
+              max: 3000,
+            ),
+            const TrackingElement(
+              color: Color(0xFFEF1A5A),
+              icondata: Icons.fastfood,
+              unit: "kcal",
+              max: 1800,
+            ),
+      
+          ],
+        ),
       ),
     );
   }

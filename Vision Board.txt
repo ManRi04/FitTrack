@@ -16,3 +16,6 @@ Fortschrittskontrolle durch Abgleich zwischen Plan und tatsächlicher Umsetzung
 Achievements, die man sich selbst setzt oder von der App vorgeschlagen bekommt
 Belohnungssystem für erreichte Meilensteine
 Zielsetzungen bleiben unveränderlich, damit man konsequent bleibt (inklusive „Bist du sicher?“-Meldung zur Absicherung)
+
+
+Stoppuhr und Timer für trainingseinheiten

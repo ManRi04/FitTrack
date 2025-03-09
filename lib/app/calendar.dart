@@ -43,59 +43,61 @@ class _CalendarPageState extends State<CalendarPage> {
   }
 
   Widget content() {
-    return Column(
-      children: [
-        Text("Calendar"),
-        Container(
-          child: TableCalendar(
-            locale: "en_US",
-            rowHeight: 43,
-            focusedDay: today,
-            availableGestures: AvailableGestures.all,
-            selectedDayPredicate: (day) => isSameDay(day, today),
-            firstDay: DateTime.utc(2010, 10, 16),
-            lastDay: DateTime.utc(2030, 3, 14),
-            onDaySelected: _onDaySelected,
-          ),
-        ),
-        SizedBox(height: 20), // Abstand zwischen Kalender und Textfeld
-        if (today != null) ...[
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: TextField(
-              controller: _controller,
-              decoration: InputDecoration(
-                labelText:
-                    'Enter your note for ${today.day}/${today.month}/${today.year}',
-                border: OutlineInputBorder(),
-              ),
-              maxLines: 3, // Textfeld auf 3 Zeilen beschränken
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Text("Calendar"),
+          Container(
+            child: TableCalendar(
+              locale: "en_US",
+              rowHeight: 43,
+              focusedDay: today,
+              availableGestures: AvailableGestures.all,
+              selectedDayPredicate: (day) => isSameDay(day, today),
+              firstDay: DateTime.utc(2010, 10, 16),
+              lastDay: DateTime.utc(2030, 3, 14),
+              onDaySelected: _onDaySelected,
             ),
           ),
-          SizedBox(height: 10),
-          ElevatedButton(onPressed: _saveEvent, child: Text("Save Note")),
-          SizedBox(height: 50),
-          ElevatedButton(
-            onPressed: () {
-              DateTime _clickedDay = today;
-              String clickedDayDate = DateFormat('yyyy-MM-dd').format(today);
-              if(_clickedDay == DateTime.now()){
-                 clickedDayDate = "Today";
-              }else if(_clickedDay == DateTime.now().subtract(Duration(days: 1))){
-                clickedDayDate ="Yesterday";
-              }
-              // Navigation zur neuen Seite
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ProgressPage(title: clickedDayDate),
+          SizedBox(height: 20), // Abstand zwischen Kalender und Textfeld
+          if (today != null) ...[
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: TextField(
+                controller: _controller,
+                decoration: InputDecoration(
+                  labelText:
+                      'Enter your note for ${today.day}/${today.month}/${today.year}',
+                  border: OutlineInputBorder(),
                 ),
-              );
-            },
-            child: Text("Open progress"),
-          ),
+                maxLines: 3, // Textfeld auf 3 Zeilen beschränken
+              ),
+            ),
+            SizedBox(height: 10),
+            ElevatedButton(onPressed: _saveEvent, child: Text("Save Note")),
+            SizedBox(height: 50),
+            ElevatedButton(
+              onPressed: () {
+                DateTime _clickedDay = today;
+                String clickedDayDate = DateFormat('yyyy-MM-dd').format(today);
+                if(_clickedDay == DateTime.now()){
+                   clickedDayDate = "Today";
+                }else if(_clickedDay == DateTime.now().subtract(Duration(days: 1))){
+                  clickedDayDate ="Yesterday";
+                }
+                // Navigation zur neuen Seite
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProgressPage(title: clickedDayDate),
+                  ),
+                );
+              },
+              child: Text("Open progress"),
+            ),
+          ],
         ],
-      ],
+      ),
     );
   }
 }
