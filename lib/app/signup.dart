@@ -1,25 +1,28 @@
-import 'package:fit_track/app/progress.dart';
-import 'package:fit_track/app/signup.dart';
+import 'package:fit_track/app/login.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+import 'Progress.dart';
+
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
+  final _formKey = GlobalKey<FormState>();  // Für Formularvalidierung
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Login Screen")),
+      appBar: AppBar(title: Text("Sign Up Screen")),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            "Login",
+            "Sign Up",
             style: TextStyle(
               fontSize: 35,
               color: Colors.teal,
@@ -30,6 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
             padding: const EdgeInsets.symmetric(vertical: 30),
             child: Column(
               children: [
+                // Email Text Field
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: TextFormField(
@@ -40,44 +44,68 @@ class _LoginScreenState extends State<LoginScreen> {
                       prefixIcon: Icon(Icons.email),
                       border: OutlineInputBorder(),
                     ),
-                    onChanged: (String value) {},
                     validator: (value) {
                       return value!.isEmpty ? "Please enter email" : null;
                     },
                   ),
                 ),
                 SizedBox(height: 30),
+
+                // Password Text Field
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: TextFormField(
-                    keyboardType: TextInputType.emailAddress,
+                    obscureText: true,  // Verbirgt das Passwort
                     decoration: InputDecoration(
                       labelText: "Password",
                       hintText: "Enter Password",
-                      prefixIcon: Icon(Icons.password),
+                      prefixIcon: Icon(Icons.lock),
                       border: OutlineInputBorder(),
                     ),
-                    onChanged: (String value) {},
                     validator: (value) {
                       return value!.isEmpty ? "Please enter password" : null;
                     },
                   ),
                 ),
+                SizedBox(height: 30),
 
+                // Confirm Password Text Field
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: TextFormField(
+                    obscureText: true,  // Verbirgt das Passwort
+                    decoration: InputDecoration(
+                      labelText: "Confirm Password",
+                      hintText: "Confirm Password",
+                      prefixIcon: Icon(Icons.lock),
+                      border: OutlineInputBorder(),
+                    ),
+                    validator: (value) {
+                      return value!.isEmpty
+                          ? "Please confirm your password"
+                          : null;
+                    },
+                  ),
+                ),
+                SizedBox(height: 30),
+
+                // Sign Up Button
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 35),
                   child: MaterialButton(
                     minWidth: double.infinity,
                     onPressed: () {
-                      // Navigation zur neuen Seite
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ProgressPage(title: "Today"),
-                        ),
-                      );
+                      if (_formKey.currentState!.validate()) {
+                        // Navigation zur neuen Seite nach erfolgreicher Validierung
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginScreen(),
+                          ),
+                        );
+                      }
                     },
-                    child: Text("Login"),
+                    child: Text("Sign Up"),
                     color: Colors.teal,
                     textColor: Colors.white,
                   ),
@@ -85,12 +113,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 SizedBox(height: 30),
 
-                // No account? Sign up Text
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "No account? ",
+                      "Already have an account? ",
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.black,
@@ -102,12 +129,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => SignUpScreen(),
+                            builder: (context) => LoginScreen(),
                           ),
                         );
                       },
                       child: Text(
-                        "Sign Up",
+                        "Log in",
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.teal,

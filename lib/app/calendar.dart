@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import 'progress.dart';
+import 'package:intl/intl.dart';
 
 class CalendarPage extends StatefulWidget {
   @override
@@ -76,11 +77,18 @@ class _CalendarPageState extends State<CalendarPage> {
           SizedBox(height: 50),
           ElevatedButton(
             onPressed: () {
+              DateTime _clickedDay = today;
+              String clickedDayDate = DateFormat('yyyy-MM-dd').format(today);
+              if(_clickedDay == DateTime.now()){
+                 clickedDayDate = "Today";
+              }else if(_clickedDay == DateTime.now().subtract(Duration(days: 1))){
+                clickedDayDate ="Yesterday";
+              }
               // Navigation zur neuen Seite
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ProgressPage(title: today.toString().split("00:00:00.000Z")[0]),
+                  builder: (context) => ProgressPage(title: clickedDayDate),
                 ),
               );
             },
