@@ -1,0 +1,18 @@
+App-Idee: Deine persönliche Fitness-App
+
+Hey, ich habe eine coole Idee für eine Fitness-App, die Training, Ernährung und Zielverfolgung optimal kombiniert. Hier die wichtigsten Features:
+
+1. Training & Tracking
+
+Automatische Aufzeichnung von Läufen, Workouts und Ernährungsgewohnheiten
+Individuelle Trainings- und Ernährungspläne mit Checklisten für jede Einheit
+Terminkalender zur Planung von Workouts und Mahlzeiten
+2. Intelligente Analyse & Berechnungen
+
+Berechnung des Nährstoffbedarfs basierend auf Trainingsplan, Körpergewicht, Alter & Geschlecht
+Fortschrittskontrolle durch Abgleich zwischen Plan und tatsächlicher Umsetzung
+3. Motivation & Ziele
+
+Achievements, die man sich selbst setzt oder von der App vorgeschlagen bekommt
+Belohnungssystem für erreichte Meilensteine
+Zielsetzungen bleiben unveränderlich, damit man konsequent bleibt (inklusive „Bist du sicher?“-Meldung zur Absicherung)
