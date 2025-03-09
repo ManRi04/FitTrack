@@ -1,3 +1,4 @@
+import 'package:fit_track/app/Timer.dart';
 import 'package:flutter/material.dart';
 
 import 'Challenges.dart';
@@ -110,6 +111,26 @@ class ProfilPage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
               ),
             ),
+            SizedBox(height: 50,),
+            ElevatedButton.icon(
+              icon: Icon(Icons.timer, size: 30), // Das Icon für den Button
+              label: Text('Timer'), // Der Text für den Button
+              onPressed: () {
+                // Navigiere zur ChallengesPage, wenn der Button gedrückt wird
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => TimerPage()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white, backgroundColor: Colors.teal, // Textfarbe des Buttons
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12), // Abgerundete Ecken
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+              ),
+            ),
+
             ],
         ),
       ),
