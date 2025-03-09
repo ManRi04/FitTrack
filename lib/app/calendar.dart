@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+import 'progress.dart';
+
 class CalendarPage extends StatefulWidget {
   @override
   _CalendarPageState createState() => _CalendarPageState();
@@ -14,7 +16,9 @@ class _CalendarPageState extends State<CalendarPage> {
   void _onDaySelected(DateTime day, DateTime focusedDay) {
     setState(() {
       today = day;
-      _controller.text = _eventNotes[day] ?? ''; // Falls ein Text für den Tag existiert, laden.
+      _controller.text =
+          _eventNotes[day] ??
+          ''; // Falls ein Text für den Tag existiert, laden.
     });
   }
 
@@ -32,9 +36,7 @@ class _CalendarPageState extends State<CalendarPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Here are your training plans"),
-      ),
+      appBar: AppBar(title: Text("Here are your training plans")),
       body: content(),
     );
   }
@@ -62,16 +64,27 @@ class _CalendarPageState extends State<CalendarPage> {
             child: TextField(
               controller: _controller,
               decoration: InputDecoration(
-                labelText: 'Enter your note for ${today.day}/${today.month}/${today.year}',
+                labelText:
+                    'Enter your note for ${today.day}/${today.month}/${today.year}',
                 border: OutlineInputBorder(),
               ),
               maxLines: 3, // Textfeld auf 3 Zeilen beschränken
             ),
           ),
           SizedBox(height: 10),
+          ElevatedButton(onPressed: _saveEvent, child: Text("Save Note")),
+          SizedBox(height: 50),
           ElevatedButton(
-            onPressed: _saveEvent,
-            child: Text("Save Note"),
+            onPressed: () {
+              // Navigation zur neuen Seite
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProgressPage(title: today.toString().split("00:00:00.000Z")[0]),
+                ),
+              );
+            },
+            child: Text("Open progress"),
           ),
         ],
       ],

@@ -1,5 +1,5 @@
-class Todo{
-  final int id ;
+class Todo {
+  final int id;
   final String title;
 
   final String createdAt;
@@ -10,5 +10,5 @@ class Todo{
     required this.title,
     required this.createdAt,
     this.updatedAt,
-});}
-
+  });
+}

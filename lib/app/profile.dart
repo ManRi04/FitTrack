@@ -4,13 +4,11 @@ class ProfilPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Profil"),
-      ),
+      appBar: AppBar(title: Text("Profil")),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),  // Padding für den gesamten Inhalt
+        padding: const EdgeInsets.all(16.0), // Padding für den gesamten Inhalt
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,  // Text links ausrichten
+          crossAxisAlignment: CrossAxisAlignment.start, // Text links ausrichten
           children: [
             // Profilbild oder Icon
             Center(
@@ -24,19 +22,26 @@ class ProfilPage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 20),  // Abstand zum nächsten Element
-
+            SizedBox(height: 20), // Abstand zum nächsten Element
             // Vorname
             Text(
               "Vorname: Max",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: Colors.white),
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
             ),
             SizedBox(height: 10),
 
             // Nachname
             Text(
               "Nachname: Mustermann",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
             ),
             SizedBox(height: 10),
 
@@ -61,15 +66,15 @@ class ProfilPage extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(
-                  horizontal: 130,
-                vertical: 30
+                horizontal: 130,
+                vertical: 30,
               ),
               child: SizedBox(
                 width: 200,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xFF740F77),
-                      minimumSize: Size(20, 50)
+                    minimumSize: Size(20, 50),
                   ),
                   onPressed: () {
                     Navigator.push(
@@ -77,10 +82,14 @@ class ProfilPage extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => EditProfilPage()),
                     );
                   },
-                  child: Text("Edit Profile", style: TextStyle(color: Color(0xFFFFFFFF), ),softWrap: false,),
+                  child: Text(
+                    "Edit Profile",
+                    style: TextStyle(color: Color(0xFFFFFFFF)),
+                    softWrap: false,
+                  ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -126,9 +135,18 @@ class _EditProfilPageState extends State<EditProfilPage> {
               SizedBox(height: 10),
               buildTextField("Nachname", nachname, (value) => nachname = value),
               SizedBox(height: 10),
-              buildTextField("E-Mail", email, (value) => email = value, isEmail: true),
+              buildTextField(
+                "E-Mail",
+                email,
+                (value) => email = value,
+                isEmail: true,
+              ),
               SizedBox(height: 10),
-              buildTextField("Geburtsdatum", geburtsdatum, (value) => geburtsdatum = value),
+              buildTextField(
+                "Geburtsdatum",
+                geburtsdatum,
+                (value) => geburtsdatum = value,
+              ),
               SizedBox(height: 50),
 
               Center(
@@ -149,21 +167,29 @@ class _EditProfilPageState extends State<EditProfilPage> {
     );
   }
 
-  Widget buildTextField(String label, String initialValue, Function(String) onSaved, {bool isEmail = false}) {
+  Widget buildTextField(
+    String label,
+    String initialValue,
+    Function(String) onSaved, {
+    bool isEmail = false,
+  }) {
     return TextFormField(
       initialValue: initialValue,
       style: TextStyle(color: Colors.white),
       decoration: InputDecoration(
         labelText: label,
         labelStyle: TextStyle(color: Colors.white),
-        enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
-        focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.blue)),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.white),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.blue),
+        ),
       ),
       keyboardType: isEmail ? TextInputType.emailAddress : TextInputType.text,
-      validator: (value) => value!.isEmpty ? "$label darf nicht leer sein" : null,
+      validator:
+          (value) => value!.isEmpty ? "$label darf nicht leer sein" : null,
       onSaved: (value) => onSaved(value!),
     );
   }
 }
-
-
