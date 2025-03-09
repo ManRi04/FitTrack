@@ -1,6 +1,8 @@
 
+import 'package:fit_track/calendar.dart';
 import 'package:flutter/material.dart';
 import 'profile.dart';
+
 
 class MyHomePage extends StatefulWidget {
 
@@ -68,7 +70,7 @@ class _DetailPageState extends State<DetailPage> {
               // Navigation zur neuen Seite
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => NewPage()),
+                MaterialPageRoute(builder: (context) => ProfilPage()),
               );
             },
             child: Row(
@@ -81,7 +83,29 @@ class _DetailPageState extends State<DetailPage> {
                 ),
               ],
             ),
+          ),
+
+
+          GestureDetector(
+            onTap: () {
+              // Navigation zur neuen Seite
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CalendarPage()),
+              );
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center, // Verschiebt das Icon nach links
+              children: [
+                Icon(
+                  Icons.calendar_month_outlined,
+                  size: 50,
+                  color: Colors.white,
+                ),
+              ],
+            ),
           )
+
           ,
           Text(widget.headline, style: TextStyle(fontSize: 48, color: Color(0xFFFFFFFF)),),
           const TrackingElement(color: Color(0xFFEFB21A), icondata: Icons.directions_run,unit:"m", max:5000),
