@@ -2,6 +2,7 @@
 
 //import 'dart:ffi';
 
+import 'package:fit_track/app/login.dart';
 import 'package:flutter/material.dart';
 import 'homepage.dart';
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const LoginScreen(),
     );
   }
 }

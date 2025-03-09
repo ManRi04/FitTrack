@@ -1,3 +1,4 @@
+import 'package:fit_track/app/homepage.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -73,7 +74,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 35),
                     child: MaterialButton(
                       minWidth: double.infinity,
-                      onPressed: () {} ,
+                      onPressed: () {
+                        // Navigation zur neuen Seite
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => MyHomePage(title: "")),
+                        );
+                      } ,
                       child: Text("Login"),
                       color: Colors.teal,
                       textColor: Colors.white,
