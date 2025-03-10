@@ -80,10 +80,11 @@ class _CalendarPageState extends State<CalendarPage> {
               onPressed: () {
                 DateTime _clickedDay = today;
                 String clickedDayDate = DateFormat('yyyy-MM-dd').format(today);
-                if(_clickedDay == DateTime.now()){
-                   clickedDayDate = "Today";
-                }else if(_clickedDay == DateTime.now().subtract(Duration(days: 1))){
-                  clickedDayDate ="Yesterday";
+                if (_clickedDay == DateTime.now()) {
+                  clickedDayDate = "Today";
+                } else if (_clickedDay ==
+                    DateTime.now().subtract(Duration(days: 1))) {
+                  clickedDayDate = "Yesterday";
                 }
                 // Navigation zur neuen Seite
                 Navigator.push(

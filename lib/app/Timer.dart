@@ -1,5 +1,3 @@
-
-
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
@@ -55,9 +53,7 @@ class _TimerPageState extends State<TimerPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Timer / Stopwatch"),
-      ),
+      appBar: AppBar(title: Text("Timer / Stopwatch")),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

@@ -10,9 +10,12 @@ class ProfilPage extends StatelessWidget {
       appBar: AppBar(title: Text("Profil")),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0), // Padding für den gesamten Inhalt
+          padding: const EdgeInsets.all(
+            16.0,
+          ), // Padding für den gesamten Inhalt
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start, // Text links ausrichten
+            crossAxisAlignment:
+                CrossAxisAlignment.start, // Text links ausrichten
             children: [
               // Profilbild oder Icon
               Center(
@@ -37,7 +40,7 @@ class ProfilPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10),
-        
+
               // Nachname
               Text(
                 "Nachname: Mustermann",
@@ -48,21 +51,21 @@ class ProfilPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10),
-        
+
               // Weitere Zeilen (z.B. E-Mail oder Geburtsdatum)
               Text(
                 "E-Mail: max.mustermann@example.com",
                 style: TextStyle(fontSize: 18, color: Colors.white),
               ),
               SizedBox(height: 10),
-        
+
               // Platz für weitere Informationen
               Text(
                 "Geburtsdatum: 01.01.1990",
                 style: TextStyle(fontSize: 18, color: Colors.white),
               ),
               SizedBox(height: 20),
-        
+
               // Weitere Zeilen können hier hinzugefügt werden
               Text(
                 "Weitere Infos: Hier kann ein zusätzlicher Text stehen.",
@@ -83,7 +86,9 @@ class ProfilPage extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => EditProfilPage()),
+                        MaterialPageRoute(
+                          builder: (context) => EditProfilPage(),
+                        ),
                       );
                     },
                     child: Text(
@@ -95,7 +100,10 @@ class ProfilPage extends StatelessWidget {
                 ),
               ),
               ElevatedButton.icon(
-                icon: Icon(Icons.fitness_center, size: 30), // Das Icon für den Button
+                icon: Icon(
+                  Icons.fitness_center,
+                  size: 30,
+                ), // Das Icon für den Button
                 label: Text('Go to Challenges'), // Der Text für den Button
                 onPressed: () {
                   // Navigiere zur ChallengesPage, wenn der Button gedrückt wird
@@ -105,14 +113,17 @@ class ProfilPage extends StatelessWidget {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white, backgroundColor: Colors.teal, // Textfarbe des Buttons
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.teal, // Textfarbe des Buttons
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12), // Abgerundete Ecken
+                    borderRadius: BorderRadius.circular(
+                      12,
+                    ), // Abgerundete Ecken
                   ),
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                 ),
               ),
-              SizedBox(height: 50,),
+              SizedBox(height: 50),
               ElevatedButton.icon(
                 icon: Icon(Icons.timer, size: 30), // Das Icon für den Button
                 label: Text('Timer'), // Der Text für den Button
@@ -124,15 +135,17 @@ class ProfilPage extends StatelessWidget {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white, backgroundColor: Colors.teal, // Textfarbe des Buttons
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.teal, // Textfarbe des Buttons
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12), // Abgerundete Ecken
+                    borderRadius: BorderRadius.circular(
+                      12,
+                    ), // Abgerundete Ecken
                   ),
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                 ),
               ),
-        
-              ],
+            ],
           ),
         ),
       ),
@@ -177,7 +190,11 @@ class _EditProfilPageState extends State<EditProfilPage> {
                 ),
                 buildTextField("Vorname", vorname, (value) => vorname = value),
                 SizedBox(height: 10),
-                buildTextField("Nachname", nachname, (value) => nachname = value),
+                buildTextField(
+                  "Nachname",
+                  nachname,
+                  (value) => nachname = value,
+                ),
                 SizedBox(height: 10),
                 buildTextField(
                   "E-Mail",
@@ -192,7 +209,7 @@ class _EditProfilPageState extends State<EditProfilPage> {
                   (value) => geburtsdatum = value,
                 ),
                 SizedBox(height: 50),
-      
+
                 Center(
                   child: ElevatedButton(
                     onPressed: () {

@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
 class ChallengesPage extends StatefulWidget {
   @override
   _ChallengesPageState createState() => _ChallengesPageState();
@@ -14,10 +13,7 @@ class _ChallengesPageState extends State<ChallengesPage> {
       'title': '10.000 Schritte',
       'description': 'Gehe jeden Tag 10.000 Schritte.',
     },
-    {
-      'title': '5 km Laufen',
-      'description': 'Laufe 5 km in dieser Woche.',
-    },
+    {'title': '5 km Laufen', 'description': 'Laufe 5 km in dieser Woche.'},
     {
       'title': 'Woche ohne Zucker',
       'description': 'Verzichte eine Woche lang auf Zucker.',
@@ -31,9 +27,7 @@ class _ChallengesPageState extends State<ChallengesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Challenges'),
-      ),
+      appBar: AppBar(title: Text('Challenges')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView.builder(
@@ -77,9 +71,7 @@ class _ChallengeCardState extends State<ChallengeCard> {
     return Card(
       elevation: 5,
       margin: EdgeInsets.only(bottom: 16),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -87,18 +79,12 @@ class _ChallengeCardState extends State<ChallengeCard> {
           children: [
             Text(
               widget.title,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8),
             Text(
               widget.description,
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey[600],
-              ),
+              style: TextStyle(fontSize: 16, color: Colors.grey[600]),
             ),
             SizedBox(height: 12),
             ElevatedButton(
@@ -108,9 +94,12 @@ class _ChallengeCardState extends State<ChallengeCard> {
                 });
                 widget.onStart(); // Aufrufen der externen Funktion
               },
-              child: Text(isStarted ? 'Challenge gestartet' : 'Starte Challenge'),
+              child: Text(
+                isStarted ? 'Challenge gestartet' : 'Starte Challenge',
+              ),
               style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.white, backgroundColor: Colors.teal,
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.teal,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),

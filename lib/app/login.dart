@@ -91,10 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     Text(
                       "No account? ",
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
-                      ),
+                      style: TextStyle(fontSize: 16, color: Colors.black),
                     ),
                     TextButton(
                       onPressed: () {
@@ -108,17 +105,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       child: Text(
                         "Sign Up",
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.teal,
-                        ),
+                        style: TextStyle(fontSize: 16, color: Colors.teal),
                       ),
                     ),
                   ],
                 ),
 
                 SizedBox(height: 30),
-
               ],
             ),
           ),

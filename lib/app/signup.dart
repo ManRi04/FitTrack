@@ -11,7 +11,7 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  final _formKey = GlobalKey<FormState>();  // Für Formularvalidierung
+  final _formKey = GlobalKey<FormState>(); // Für Formularvalidierung
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +55,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: TextFormField(
-                    obscureText: true,  // Verbirgt das Passwort
+                    obscureText: true, // Verbirgt das Passwort
                     decoration: InputDecoration(
                       labelText: "Password",
                       hintText: "Enter Password",
@@ -73,7 +73,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: TextFormField(
-                    obscureText: true,  // Verbirgt das Passwort
+                    obscureText: true, // Verbirgt das Passwort
                     decoration: InputDecoration(
                       labelText: "Confirm Password",
                       hintText: "Confirm Password",
@@ -118,10 +118,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   children: [
                     Text(
                       "Already have an account? ",
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
-                      ),
+                      style: TextStyle(fontSize: 16, color: Colors.black),
                     ),
                     TextButton(
                       onPressed: () {
@@ -135,17 +132,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       },
                       child: Text(
                         "Log in",
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.teal,
-                        ),
+                        style: TextStyle(fontSize: 16, color: Colors.teal),
                       ),
                     ),
                   ],
                 ),
 
                 SizedBox(height: 30),
-
               ],
             ),
           ),
