@@ -1,10 +1,12 @@
+import 'package:fit_track/app/NutritionInput.dart';
+import 'package:fit_track/app/WorkoutPlan.dart';
 import 'package:fit_track/app/calendar.dart';
 import 'package:fit_track/app/login.dart';
 import 'package:flutter/material.dart';
 import 'profile.dart';
 
-class ProgressPage extends StatefulWidget {
-  const ProgressPage({super.key, required this.title});
+class ScreenSwiperPage extends StatefulWidget {
+  const ScreenSwiperPage({super.key, required this.title});
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -18,10 +20,10 @@ class ProgressPage extends StatefulWidget {
   final String title;
 
   @override
-  State<ProgressPage> createState() => _ProgressPageState();
+  State<ScreenSwiperPage> createState() => _ScreenSwiperPageState();
 }
 
-class _ProgressPageState extends State<ProgressPage> {
+class _ScreenSwiperPageState extends State<ScreenSwiperPage> {
   int _counter = 0;
 
   final controller = PageController(initialPage: 0);
@@ -40,35 +42,18 @@ class _ProgressPageState extends State<ProgressPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
-        controller: controller,
-        children: [
-          DetailPage(headline: widget.title),
-
-        ],
-      ),
-    );
-  }
-}
-
-class DetailPage extends StatefulWidget {
-  const DetailPage({Key? key, required this.headline}) : super(key: key);
-
-  final String headline;
-
-  @override
-  State<DetailPage> createState() => _DetailPageState();
-}
-
-class _DetailPageState extends State<DetailPage> {
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(32, 48, 32, 32),
-        child: Column(
+      appBar: AppBar(title: const Text('AppBar with hamburger button')),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
           children: [
-            GestureDetector(
+            const DrawerHeader(
+              decoration: BoxDecoration(color: Colors.blue),
+              child: Text('Drawer Header'),
+            ),
+            ListTile(
+              leading: Icon(Icons.account_circle),
+              title: const Text('Profile'),
               onTap: () {
                 // Navigation zur neuen Seite
                 Navigator.push(
@@ -76,16 +61,10 @@ class _DetailPageState extends State<DetailPage> {
                   MaterialPageRoute(builder: (context) => ProfilPage()),
                 );
               },
-              child: Row(
-                mainAxisAlignment:
-                    MainAxisAlignment.start, // Verschiebt das Icon nach links
-                children: [
-                  Icon(Icons.account_circle, size: 50, color: Colors.white),
-                ],
-              ),
             ),
-      
-            GestureDetector(
+            ListTile(
+              leading: Icon(Icons.calendar_month_outlined) ,
+              title: const Text("Calendar"),
               onTap: () {
                 // Navigation zur neuen Seite
                 Navigator.push(
@@ -93,19 +72,10 @@ class _DetailPageState extends State<DetailPage> {
                   MaterialPageRoute(builder: (context) => CalendarPage()),
                 );
               },
-              child: Row(
-                mainAxisAlignment:
-                    MainAxisAlignment.center, // Verschiebt das Icon nach links
-                children: [
-                  Icon(
-                    Icons.calendar_month_outlined,
-                    size: 50,
-                    color: Colors.white,
-                  ),
-                ],
-              ),
             ),
-            GestureDetector(
+            ListTile(
+              leading: Icon(Icons.logout) ,
+              title: const Text("Logout"),
               onTap: () {
                 // Navigation zur neuen Seite
                 Navigator.push(
@@ -113,22 +83,41 @@ class _DetailPageState extends State<DetailPage> {
                   MaterialPageRoute(builder: (context) => LoginScreen()),
                 );
               },
-              child: Transform.translate(
-                offset: Offset(20, -105),  // Verschiebt das Icon um 20 Pixel nach rechts und 105 nach oben
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 0, right: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end, // Verschiebt das Icon nach rechts
-                    children: [
-                      // Hier ist der GestureDetector jetzt direkt um das Icon herum
-                      Icon(Icons.login_outlined, size: 50, color: Colors.white),
-                    ],
-                  ),
-                ),
-              ),
             ),
-      
-      
+          ],
+        ),
+      ),
+      body: PageView(
+        controller: controller,
+        children: [
+          StatsPage(headline: widget.title),
+          NutritionInputPage(currentDate: widget.title),
+          WorkoutPlanPage(currentDate: widget.title),
+
+        ],
+      ),
+    );
+  }
+}
+
+class StatsPage extends StatefulWidget {
+  const StatsPage({Key? key, required this.headline}) : super(key: key);
+
+  final String headline;
+
+  @override
+  State<StatsPage> createState() => _StatsPageState();
+}
+
+class _StatsPageState extends State<StatsPage> {
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsetsDirectional.fromSTEB(32, 48, 32, 32),
+        child: Column(
+          children: [
+
             Text(
               widget.headline,
               style: TextStyle(fontSize: 48, color: Color(0xFFFFFFFF)),
@@ -151,7 +140,6 @@ class _DetailPageState extends State<DetailPage> {
               unit: "kcal",
               max: 1800,
             ),
-      
           ],
         ),
       ),
@@ -263,3 +251,45 @@ class _SideBarState extends State<SideBar> {
     );
   }
 }
+
+class OptionSideBar extends StatefulWidget {
+  const OptionSideBar({super.key});
+
+  @override
+  State<OptionSideBar> createState() => _OptionSideBarState();
+}
+
+class _OptionSideBarState extends State<OptionSideBar> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('AppBar with hamburger button')),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(color: Colors.blue),
+              child: Text('Drawer Header'),
+            ),
+            ListTile(
+              title: const Text('Item 1'),
+              onTap: () {
+                // Update the state of the app.
+              },
+            ),
+            ListTile(
+              title: const Text('Item 2'),
+              onTap: () {
+                // Update the state of the app.
+              },
+            ),
+          ],
+        ),
+      ),
+
+    );
+  }
+}
+
+

@@ -6,7 +6,6 @@ class NutritionInputPage extends StatefulWidget {
 
   final String currentDate;
 
-
   @override
   _NutritionInputPageState createState() => _NutritionInputPageState();
 }
