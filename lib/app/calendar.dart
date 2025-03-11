@@ -90,7 +90,8 @@ class _CalendarPageState extends State<CalendarPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ScreenSwiperPage(title: clickedDayDate),
+                    builder:
+                        (context) => ScreenSwiperPage(title: clickedDayDate),
                   ),
                 );
               },
