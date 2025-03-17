@@ -10,6 +10,7 @@ void main() async{
   await Hive.initFlutter();
 
   var users = await Hive.openBox('users');
+  print(users.toMap());
 
   runApp(const MyApp());
 }

@@ -162,7 +162,7 @@ class _ScreenSwiperPageState extends State<ScreenSwiperPage> {
 }
 
 class StatsPage extends StatefulWidget {
-  const StatsPage({Key? key, required this.headline}) : super(key: key);
+  const StatsPage({super.key, required this.headline});
 
   final String headline;
 
@@ -209,12 +209,12 @@ class _StatsPageState extends State<StatsPage> {
 
 class TrackingElement extends StatefulWidget {
   const TrackingElement({
-    Key? key,
+    super.key,
     required this.color,
     required this.icondata,
     required this.unit,
     required this.max,
-  }) : super(key: key);
+  });
 
   final Color color;
   final IconData icondata;
