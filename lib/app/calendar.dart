@@ -5,14 +5,16 @@ import 'progress.dart';
 import 'package:intl/intl.dart';
 
 class CalendarPage extends StatefulWidget {
+  const CalendarPage({super.key});
+
   @override
   _CalendarPageState createState() => _CalendarPageState();
 }
 
 class _CalendarPageState extends State<CalendarPage> {
   DateTime today = DateTime.now();
-  TextEditingController _controller = TextEditingController();
-  Map<DateTime, String> _eventNotes = {};
+  final TextEditingController _controller = TextEditingController();
+  final Map<DateTime, String> _eventNotes = {};
 
   void _onDaySelected(DateTime day, DateTime focusedDay) {
     setState(() {
@@ -60,44 +62,44 @@ class _CalendarPageState extends State<CalendarPage> {
             ),
           ),
           SizedBox(height: 20), // Abstand zwischen Kalender und Textfeld
-          if (today != null) ...[
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: TextField(
-                controller: _controller,
-                decoration: InputDecoration(
-                  labelText:
-                      'Enter your note for ${today.day}/${today.month}/${today.year}',
-                  border: OutlineInputBorder(),
-                ),
-                maxLines: 3, // Textfeld auf 3 Zeilen beschränken
+          ...[
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: TextField(
+              controller: _controller,
+              decoration: InputDecoration(
+                labelText:
+                    'Enter your note for ${today.day}/${today.month}/${today.year}',
+                border: OutlineInputBorder(),
               ),
+              maxLines: 3, // Textfeld auf 3 Zeilen beschränken
             ),
-            SizedBox(height: 10),
-            ElevatedButton(onPressed: _saveEvent, child: Text("Save Note")),
-            SizedBox(height: 50),
-            ElevatedButton(
-              onPressed: () {
-                DateTime _clickedDay = today;
-                String clickedDayDate = DateFormat('yyyy-MM-dd').format(today);
-                if (_clickedDay == DateTime.now()) {
-                  clickedDayDate = "Today";
-                } else if (_clickedDay ==
-                    DateTime.now().subtract(Duration(days: 1))) {
-                  clickedDayDate = "Yesterday";
-                }
-                // Navigation zur neuen Seite
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder:
-                        (context) => ScreenSwiperPage(title: clickedDayDate),
-                  ),
-                );
-              },
-              child: Text("Open progress"),
-            ),
-          ],
+          ),
+          SizedBox(height: 10),
+          ElevatedButton(onPressed: _saveEvent, child: Text("Save Note")),
+          SizedBox(height: 50),
+          ElevatedButton(
+            onPressed: () {
+              DateTime clickedDay = today;
+              String clickedDayDate = DateFormat('yyyy-MM-dd').format(today);
+              if (clickedDay == DateTime.now()) {
+                clickedDayDate = "Today";
+              } else if (clickedDay ==
+                  DateTime.now().subtract(Duration(days: 1))) {
+                clickedDayDate = "Yesterday";
+              }
+              // Navigation zur neuen Seite
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder:
+                      (context) => ScreenSwiperPage(title: clickedDayDate),
+                ),
+              );
+            },
+            child: Text("Open progress"),
+          ),
+        ],
         ],
       ),
     );

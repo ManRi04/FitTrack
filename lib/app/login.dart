@@ -78,9 +78,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       );
                     },
-                    child: Text("Login"),
                     color: Colors.teal,
                     textColor: Colors.white,
+                    child: Text("Login"),
                   ),
                 ),
 

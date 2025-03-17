@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'Challenges.dart';
 
 class ProfilPage extends StatelessWidget {
+  const ProfilPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -154,6 +156,8 @@ class ProfilPage extends StatelessWidget {
 }
 
 class EditProfilPage extends StatefulWidget {
+  const EditProfilPage({super.key});
+
   @override
   _EditProfilPageState createState() => _EditProfilPageState();
 }

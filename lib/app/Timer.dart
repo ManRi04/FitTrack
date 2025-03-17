@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TimerPage extends StatefulWidget {
@@ -73,21 +72,21 @@ class _TimerPageState extends State<TimerPage> {
             // Start/Stop Button
             ElevatedButton(
               onPressed: _isRunning ? _stopTimer : _startTimer,
-              child: Text(_isRunning ? "Stop Timer" : "Start Timer"),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.teal,
                 padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
               ),
+              child: Text(_isRunning ? "Stop Timer" : "Start Timer"),
             ),
             SizedBox(height: 20),
             // Reset Button
             ElevatedButton(
               onPressed: _resetTimer,
-              child: Text("Reset Timer"),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.red,
                 padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
               ),
+              child: Text("Reset Timer"),
             ),
           ],
         ),

@@ -1,10 +1,9 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import '../model/ToDoDB.dart';
 
 
 
-import '../model/ToDoDB.dart';class DatabaseService{
+class DatabaseService{
   Database? _database;
 
   Future<Database> get database async {

@@ -4,9 +4,13 @@
 
 import 'package:fit_track/app/login.dart';
 import 'package:flutter/material.dart';
-import 'progress.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+void main() async{
+  await Hive.initFlutter();
+
+  var users = await Hive.openBox('users');
+
   runApp(const MyApp());
 }
 

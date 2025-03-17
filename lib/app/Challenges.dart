@@ -1,7 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ChallengesPage extends StatefulWidget {
+  const ChallengesPage({super.key});
+
   @override
   _ChallengesPageState createState() => _ChallengesPageState();
 }
@@ -53,7 +54,7 @@ class ChallengeCard extends StatefulWidget {
   final String description;
   final VoidCallback onStart;
 
-  const ChallengeCard({
+  const ChallengeCard({super.key, 
     required this.title,
     required this.description,
     required this.onStart,
@@ -94,15 +95,15 @@ class _ChallengeCardState extends State<ChallengeCard> {
                 });
                 widget.onStart(); // Aufrufen der externen Funktion
               },
-              child: Text(
-                isStarted ? 'Challenge gestartet' : 'Starte Challenge',
-              ),
               style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.white,
                 backgroundColor: Colors.teal,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
+              ),
+              child: Text(
+                isStarted ? 'Challenge gestartet' : 'Starte Challenge',
               ),
             ),
           ],

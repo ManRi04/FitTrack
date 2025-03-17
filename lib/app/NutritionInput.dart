@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class NutritionInputPage extends StatefulWidget {
@@ -11,7 +10,7 @@ class NutritionInputPage extends StatefulWidget {
 }
 
 class _NutritionInputPageState extends State<NutritionInputPage> {
-  List<TextEditingController> _controllers = [TextEditingController()];
+  final List<TextEditingController> _controllers = [TextEditingController()];
 
   void _addNewTextField() {
     setState(() {

@@ -1,7 +1,6 @@
 import 'package:fit_track/app/login.dart';
 import 'package:flutter/material.dart';
-
-import 'Progress.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -11,7 +10,22 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  final _formKey = GlobalKey<FormState>(); // Für Formularvalidierung
+
+  final _users = Hive.box('users');
+
+  var _availableKey =1;
+  var _email= "";
+  var _passwordFirst= "";
+  var _passwordConfirm = "";
+
+  void createUser(){
+       while(_users.containsKey(_availableKey)){
+         _availableKey++;
+       }
+      _users.put(_availableKey,{'email':_email, 'password': _passwordFirst});
+       print(_users.get(_availableKey));
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +61,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     validator: (value) {
                       return value!.isEmpty ? "Please enter email" : null;
                     },
+                    onChanged: (value){
+                      _email = value.toString();
+                    },
                   ),
                 ),
                 SizedBox(height: 30),
@@ -64,6 +81,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     validator: (value) {
                       return value!.isEmpty ? "Please enter password" : null;
+                    },
+                    onChanged: (value){
+                      _passwordFirst = value.toString();
                     },
                   ),
                 ),
@@ -85,6 +105,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ? "Please confirm your password"
                           : null;
                     },
+                    onChanged: (value){
+                      _passwordConfirm = value.toString();
+                    },
                   ),
                 ),
                 SizedBox(height: 30),
@@ -95,7 +118,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: MaterialButton(
                     minWidth: double.infinity,
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {
+                        if(_email.isEmpty || _passwordFirst.isEmpty || _passwordConfirm.isEmpty
+                        || _passwordFirst!=_passwordConfirm){
+
+                        }
+
                         // Navigation zur neuen Seite nach erfolgreicher Validierung
                         Navigator.push(
                           context,
@@ -104,10 +131,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                         );
                       }
-                    },
-                    child: Text("Sign Up"),
+                    ,
                     color: Colors.teal,
                     textColor: Colors.white,
+                    child: Text("Sign Up"),
                   ),
                 ),
 

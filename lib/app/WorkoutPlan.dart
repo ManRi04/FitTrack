@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class WorkoutPlanPage extends StatefulWidget {
@@ -11,7 +10,7 @@ class WorkoutPlanPage extends StatefulWidget {
 }
 
 class _WorkoutPlanPageState extends State<WorkoutPlanPage> {
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
