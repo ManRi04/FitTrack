@@ -12,8 +12,12 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController(
+    text: "user@mail.com",
+  );
+  final TextEditingController _passwordController = TextEditingController(
+    text: "123456",
+  );
   final _usersBox = Hive.box('users');
 
   void _login() {
@@ -35,18 +39,18 @@ class _LoginScreenState extends State<LoginScreen> {
       }
 
       if (!emailExists) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("E-Mail nicht gefunden!")),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text("E-Mail nicht gefunden!")));
         return;
       }
 
       // Überprüfe das Passwort
       var userData = _usersBox.get(userKey);
       if (userData['password'] != password) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Falsches Passwort!")),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text("Falsches Passwort!")));
         return;
       }
 
@@ -74,7 +78,11 @@ class _LoginScreenState extends State<LoginScreen> {
             children: [
               Text(
                 "Login",
-                style: TextStyle(fontSize: 35, color: Colors.teal, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 35,
+                  color: Colors.teal,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               SizedBox(height: 20),
 
@@ -142,7 +150,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         MaterialPageRoute(builder: (context) => SignUpScreen()),
                       );
                     },
-                    child: Text("Sign Up", style: TextStyle(color: Colors.teal)),
+                    child: Text(
+                      "Sign Up",
+                      style: TextStyle(color: Colors.teal),
+                    ),
                   ),
                 ],
               ),

@@ -54,7 +54,8 @@ class ChallengeCard extends StatefulWidget {
   final String description;
   final VoidCallback onStart;
 
-  const ChallengeCard({super.key, 
+  const ChallengeCard({
+    super.key,
     required this.title,
     required this.description,
     required this.onStart,

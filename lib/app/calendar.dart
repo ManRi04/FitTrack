@@ -63,43 +63,43 @@ class _CalendarPageState extends State<CalendarPage> {
           ),
           SizedBox(height: 20), // Abstand zwischen Kalender und Textfeld
           ...[
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: TextField(
-              controller: _controller,
-              decoration: InputDecoration(
-                labelText:
-                    'Enter your note for ${today.day}/${today.month}/${today.year}',
-                border: OutlineInputBorder(),
-              ),
-              maxLines: 3, // Textfeld auf 3 Zeilen beschränken
-            ),
-          ),
-          SizedBox(height: 10),
-          ElevatedButton(onPressed: _saveEvent, child: Text("Save Note")),
-          SizedBox(height: 50),
-          ElevatedButton(
-            onPressed: () {
-              DateTime clickedDay = today;
-              String clickedDayDate = DateFormat('yyyy-MM-dd').format(today);
-              if (clickedDay == DateTime.now()) {
-                clickedDayDate = "Today";
-              } else if (clickedDay ==
-                  DateTime.now().subtract(Duration(days: 1))) {
-                clickedDayDate = "Yesterday";
-              }
-              // Navigation zur neuen Seite
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder:
-                      (context) => ScreenSwiperPage(title: clickedDayDate),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: TextField(
+                controller: _controller,
+                decoration: InputDecoration(
+                  labelText:
+                      'Enter your note for ${today.day}/${today.month}/${today.year}',
+                  border: OutlineInputBorder(),
                 ),
-              );
-            },
-            child: Text("Open progress"),
-          ),
-        ],
+                maxLines: 3, // Textfeld auf 3 Zeilen beschränken
+              ),
+            ),
+            SizedBox(height: 10),
+            ElevatedButton(onPressed: _saveEvent, child: Text("Save Note")),
+            SizedBox(height: 50),
+            ElevatedButton(
+              onPressed: () {
+                DateTime clickedDay = today;
+                String clickedDayDate = DateFormat('yyyy-MM-dd').format(today);
+                if (clickedDay == DateTime.now()) {
+                  clickedDayDate = "Today";
+                } else if (clickedDay ==
+                    DateTime.now().subtract(Duration(days: 1))) {
+                  clickedDayDate = "Yesterday";
+                }
+                // Navigation zur neuen Seite
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder:
+                        (context) => ScreenSwiperPage(title: clickedDayDate),
+                  ),
+                );
+              },
+              child: Text("Open progress"),
+            ),
+          ],
         ],
       ),
     );

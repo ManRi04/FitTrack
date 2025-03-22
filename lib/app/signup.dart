@@ -15,7 +15,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>(); // Form-Key zur Validierung
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _passwordConfirmController = TextEditingController();
+  final TextEditingController _passwordConfirmController =
+      TextEditingController();
 
   var _availableKey = 1;
 
@@ -25,12 +26,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
     }
     _users.put(_availableKey, {
       'email': _emailController.text,
-      'password': _passwordController.text
+      'password': _passwordController.text,
     });
 
-    ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Registrierung erfolgreich!"))
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text("Registrierung erfolgreich!")));
 
     print(_users.get(_availableKey));
   }
@@ -44,7 +45,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Bitte alle Felder korrekt ausfüllen!"))
+        SnackBar(content: Text("Bitte alle Felder korrekt ausfüllen!")),
       );
     }
   }
@@ -63,7 +64,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
             children: [
               Text(
                 "Sign Up",
-                style: TextStyle(fontSize: 35, color: Colors.teal, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 35,
+                  color: Colors.teal,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               SizedBox(height: 20),
 
